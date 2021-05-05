@@ -1,0 +1,49 @@
+{% extends 'mainTemplate.html' %}
+    {% block content %}
+        <div class="row">
+            <div id="todoList" class="col-6">
+                <h1 class="listHeader" style="background-color: #73DFEC;">To-Do</h1>
+                <ul style="border-color: #73DFEC;">
+                    <form action="/" method="">
+                        <li class="row" style="background-color: transparent;">
+                            <input id="title" name="title" maxlength="30" class="addField col-10" type="text">
+                            <div class="col-1"></div>
+                            <input id="_method" class="hidden" name="_method" value="add">
+                            <button type="submit" class="btn-success ml-5 col-1">+</button>
+                        </li>
+                    </form>
+                        <li class="row">
+                            <div class="col-8">Do math homework</div>
+                            <div class="btnWrapper col-4">
+                                <form style="display: inline-block;" action="/" method="">
+                                    <input id="_method" class="hidden" name="_method" value="done">
+                                    <input id="id" class="hidden" name="id" value="">
+                                    <button type="submit" class="btn-warning">done</button>
+                                </form>
+                                <form style="display: inline-block;" action="/" method="">
+                                    <input id="_method" class="hidden" name="_method" value="delete">
+                                    <input id="id" class="hidden" name="id" value="">
+                                    <button  class="btn-danger">X</button>
+                                </form>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+            <div id="doneList" class="col-6">
+                <h1 class="listHeader" style="background-color: #f0ad4e;">Done</h1>
+               
+                <ul style="border-color: #f0ad4e;"> 
+                        <li class="row">
+                            <div class="col-8">Go to the Gym</div>
+                            <div class="btnWrapper col-4">
+                                <form style="display: inline-block;" action="/" method="">
+                                    <input id="_method" class="hidden" name="_method" value="delete">
+                                    <input id="id" class="hidden" name="id" value="">
+                                    <button  class="btn-danger">X</button>
+                                </form>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
