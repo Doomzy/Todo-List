@@ -2,9 +2,12 @@
     {% block content %}
         <div class="row">
             <div id="todoList" class="col-6">
-                <h1 class="listHeader" style="background-color: #73DFEC;">To-Do</h1>
+                <h1 class="listHeader" style="background-color: #73DFEC;">To-Do 
+                    <span class="fs-1">{{tasks_todo.count}} items</span>
+                </h1> 
                 <ul style="border-color: #73DFEC;">
-                    <form action="/" method="">
+                    <form action="/" method="POST">
+                        {% csrf_token %}
                         <li class="row" style="background-color: transparent;">
                             <input id="title" name="title" maxlength="30" class="addField col-10" type="text">
                             <div class="col-1"></div>
@@ -12,37 +15,51 @@
                             <button type="submit" class="btn-success ml-5 col-1">+</button>
                         </li>
                     </form>
+                    {% if not tasks_todo%}
+                        <h1 class="emptyMsg">You didnt add any tasks</h1>
+                    {% endif %}
+                    {% for ttd in tasks_todo %}
                         <li class="row">
-                            <div class="col-8">Do math homework</div>
+                            <div class="col-8">{{ttd.title}}</div>
                             <div class="btnWrapper col-4">
-                                <form style="display: inline-block;" action="/" method="">
+                                <form style="display: inline-block;" action="/" method="POST">
+                                    {% csrf_token %}
                                     <input id="_method" class="hidden" name="_method" value="done">
-                                    <input id="id" class="hidden" name="id" value="">
+                                    <input id="id" class="hidden" name="id" value={{ttd.id}}>
                                     <button type="submit" class="btn-warning">done</button>
                                 </form>
-                                <form style="display: inline-block;" action="/" method="">
+                                <form style="display: inline-block;" action="/" method="POST">
+                                    {% csrf_token %}
                                     <input id="_method" class="hidden" name="_method" value="delete">
-                                    <input id="id" class="hidden" name="id" value="">
+                                    <input id="id" class="hidden" name="id" value={{ttd.id}}>
                                     <button  class="btn-danger">X</button>
                                 </form>
                             </div>
                         </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div id="doneList" class="col-6">
                 <h1 class="listHeader" style="background-color: #f0ad4e;">Done</h1>
                
                 <ul style="border-color: #f0ad4e;"> 
+                    {% if not tasks_done%}
+                        <h1 class="emptyMsg">You didnt finish any tasks</h1>
+                    {% endif %}
+                    {% for td in tasks_done%}
                         <li class="row">
-                            <div class="col-8">Go to the Gym</div>
+                            <div class="col-8">{{td.title}}</div>
                             <div class="btnWrapper col-4">
-                                <form style="display: inline-block;" action="/" method="">
+                                <form style="display: inline-block;" action="/" method="POST">
+                                    {% csrf_token %}
                                     <input id="_method" class="hidden" name="_method" value="delete">
-                                    <input id="id" class="hidden" name="id" value="">
+                                    <input id="id" class="hidden" name="id" value={{td.id}}>
                                     <button  class="btn-danger">X</button>
                                 </form>
                             </div>
                         </li>
+                    {% endfor %}
+                    
                 </ul>
             </div>
         </div>
