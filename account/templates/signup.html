@@ -1,0 +1,10 @@
+{% extends 'mainTemplate.html' %}
+    {% block content%}
+        
+        <form class="createForm" action="{%url 'account:signup'%}" method="POST">
+            <h1 class="align-center formHeader">signup</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-success w-25 h-25" type="submit">Create</button>
+        </form>
+    {% endblock %}
