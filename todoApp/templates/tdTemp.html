@@ -1,6 +1,16 @@
 {% extends 'mainTemplate.html' %}
     {% block content %}
+        {%if user.is_authenticated%}
+            <div class="acHeader mb-5">
+                Welcome {{user}}
+                <form class="text-end float-right" action="{% url 'account:logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger ms-3">logout</button>
+                </form>
+            </div>
+        {% endif%}
         <div class="row">
+            
             <div id="todoList" class="col-6">
                 <h1 class="listHeader" style="background-color: #73DFEC;">To-Do 
                     <span class="fs-1">{{tasks_todo.count}} items</span>

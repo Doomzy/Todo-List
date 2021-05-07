@@ -83,3 +83,52 @@ li div{
     color: white;
     margin: 20px 0px;
 }
+
+.accountForm ,.createForm{
+    width: 40%;
+    margin: auto;
+    text-align-last: center;
+    background-color: whitesmoke;
+    padding: 5rem 0rem;
+    border-radius: 10px;
+}
+
+.accountForm p ,.createForm p{
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 40px;
+    font-size: 2rem;
+}
+
+.accountForm input ,.createForm input{
+    border:none;
+    border-bottom:2px solid #73DFEC ;
+    border-radius: 5px;
+    background-color: snow;
+    width:30rem;
+    height: 5rem;
+}
+
+.formHeader{
+    padding-bottom: 50px;
+    text-decoration: underline;
+}
+
+.acHeader{
+    width:15%;
+    font-size: 2rem;
+    padding: 20px;
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.helptext, .createForm ul{
+    visibility: hidden;
+    display: table-row;
+    position: absolute;
+}
+
+.createForm input{
+    margin:3rem 0rem ;
+}
